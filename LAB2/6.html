@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Credit Cards</title>
+		<script type="text/javascript">
+			function validateCards()
+			{
+				var types = document.getElementById('types').value;
+				var num  = document.getElementById('cardNum').value;
+				switch(types)
+				{
+					case "American Express":if(num.length == 15)
+											{
+												if(num.substr(0,2) == 34 || num.substr(0,2) == 37)
+													document.getElementById('result').innerHTML = "Valid Credit Card";
+												else
+													document.getElementById('result').innerHTML = "InValid Credit Card";
+											}
+											else
+												document.getElementById('result').innerHTML = "InValid Credit Card";
+											break;
+					case "Diners Club":if(num.length == 14)
+									   {
+									   		if(num.substr(0,6) == 300305)
+									   			document.getElementById('result').innerHTML = "Valid Credit Card";
+									   		else if(num.substr(0,4) == 3638)
+									   			document.getElementById('result').innerHTML = "Valid Credit Card";
+									   		else
+									   			document.getElementById('result').innerHTML = "InValid Credit Card";
+									   }
+									   else
+											document.getElementById('result').innerHTML = "InValid Credit Card";
+									   break;
+					case "Discover":if(num.length == 16)
+									{
+										if(num.substr(0,4) == 6011 || num.substr(0,2) == 65)
+											document.getElementById('result').innerHTML = "Valid Credit Card";
+										else
+									   		document.getElementById('result').innerHTML = "InValid Credit Card";
+									}
+									else
+										document.getElementById('result').innerHTML = "InValid Credit Card";
+									break;
+					case "JCB":if(num.length == 15)
+							   {
+							   		if(num.substr(0,4) == 2131 || num.substr(0,4) == 1800)
+							   			document.getElementById('result').innerHTML = "Valid Credit Card";
+							   		else
+							   			document.getElementById('result').innerHTML = "InValid Credit Card";
+							   }
+							   else if(num.length == 16 && num.substr(0,2) == 35)
+							   {
+							   		document.getElementById('result').innerHTML = "Valid Credit Card";
+							   }
+							   else
+							   		document.getElementById('result').innerHTML = "InValid Credit Card";
+							   break;
+					case "MasterCard":if(num.length == 16 && num.substr(0,4) == 5155)
+									  {
+									  		document.getElementById('result').innerHTML = "Valid Credit Card";
+									  }
+									  else
+									  		document.getElementById('result').innerHTML = "InValid Credit Card";
+							   		  break;
+					case "Visa":if((num.length == 16 || num.length == 13) && num.substr(0,1) == 4)
+								{
+									document.getElementById('result').innerHTML = "Valid Credit Card";
+								}
+								else
+									document.getElementById('result').innerHTML = "InValid Credit Card";
+								break;
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>Validate Credit Cards</h1>
+		Credit card: 
+		<select id="types">
+			<option>American Express</option>
+			<option>Diners Club</option>
+			<option>Discover</option>
+			<option>JCB</option>
+			<option>MasterCard</option>
+			<option>Visa</option>
+		</select><br>
+		Number:
+		<input type="text" id="cardNum"><br><br>
+		<button onclick="validateCards()">Validate</button><br>
+		<p id="result"></p>
+	</body>
+</html>

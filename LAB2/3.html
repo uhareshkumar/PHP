@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<style type="text/css">
+			#main
+			{
+				height: 500px;
+				width: 500px;
+				background:url("1.png");
+				background-size: 400px 500px;
+				background-repeat: no-repeat;
+				background-attachment: relative;
+				border:2px solid black;
+			}
+		</style>
+		<script type="text/javascript">
+			tSize = "16";
+			tColor = "black";
+			function changeImage()
+			{
+				var path1 = document.getElementById('path').value;
+				document.getElementById('main').style = 'background:url("'+path1+'");';
+			}
+			function changePosition()
+			{
+				var p = document.getElementById('pos').value;
+				if(p == "Left")
+				{
+					document.getElementById('main').style = "background-position:0% 100%;";
+				}
+				else if(p == "Right")
+				{
+					document.getElementById('main').style = "background-position:100%;";
+				}
+				else
+				{
+					document.getElementById('main').style = "background-size:500px 500px";
+				}			
+			}
+			function editText()
+			{
+				var temp = document.getElementById('text1').value;
+				document.getElementById('p1').innerHTML = temp;
+			}
+			function fontSize()
+			{
+				tSize = document.getElementById('size1').value;
+				document.getElementById('p1').style = "color:"+tColor+";font-size:"+tSize+"px;";
+			}
+			function changeColor()
+			{
+				tColor = document.getElementById('color1').value;
+				document.getElementById('p1').style = "color:"+tColor+";font-size:"+tSize+"px;";
+			}
+		</script>
+	</head>
+	<body>
+		<div id="main">
+			<p id="p1">Enter Your Text</p>
+		</div>
+		<table>
+			<tr>
+				<!-- To File Pick And Change Image -->
+				<td>
+					<input type="file" id="path">
+				</td>
+				<td>
+					<button onclick="changeImage()">Change Image</button>
+				</td>
+			</tr>
+			<tr>
+				<!-- To Change Position Of Image -->
+				<td>
+					<select id="pos">
+						<option>Left</option>
+						<option>Right</option>
+						<option>Background</option>
+					</select>
+				</td>
+				<td>
+					<button onclick="changePosition()">Change Position</button>
+				</td>
+			</tr>
+			<tr>
+				<!-- To Edit Text -->
+				<td>
+					<input type="text" id="text1">
+				</td>
+				<td>
+					<button onclick="editText()">Edit Text</button><br>
+				</td>
+			</tr>
+			<tr>
+				<!-- To Change Font Size -->
+				<td>
+					<input type="text" id="size1">
+				</td>
+				<td>
+					<button onclick="fontSize()">Change Font Size</button><br>
+				</td>
+			</tr>
+			<tr>
+				<!-- To Change Font Color -->
+				<td>
+					<input type="Color" id="color1">
+				</td>
+				<td>
+					<button onclick="changeColor()">Change Font Color</button>
+				</td>
+			</tr>
+		</table>				
+	</body>
+</html>

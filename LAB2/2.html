@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Haresh</title>
+		<style type="text/css">
+			#img1
+			{
+				height: 500px;
+				width: 500px;
+				border: 2px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			paths = [];
+			i = 0;
+			function addPath()
+			{
+				var temp = document.getElementById('path').value;
+				if(temp === "" || temp === " ")
+					alert("Enter a valid path");
+				else
+				{
+					paths[paths.length] = temp;
+					alert(temp + " added sucessfully!!!");
+				}
+			}
+			function slideShow()
+			{
+				if(paths.length < 2)
+					alert("Add minimum of 5 images to start slide show");
+				else
+					{
+						document.getElementById('img1').src = paths[0];
+						x = setInterval(next,5000);
+					}
+			}
+			function next()
+			{
+				if(i == paths.length-1)
+					{
+						alert("No more images");
+						clearInterval(x);
+					}
+				else
+					{
+						i += 1;
+						document.getElementById('img1').src = paths[i];
+					}
+			}
+			function prev()
+			{
+				if(i == 0)
+					alert("No previous images");
+				else
+					i -= 1;
+				document.getElementById('img1').src = paths[i];
+			}
+		</script>
+		<p>Enter the image path</p>
+		<input type="text" id="path">
+		<button onClick="addPath()">Add Image</button>
+		<button onClick="slideShow()">Start Slide Show</button><br>
+		<button onClick="prev()"> << </button>
+		<img src=".png" alt="Invalid Image" id="img1">
+		<button onClick="next()"> >> </button>
+	</body>
+</html>
